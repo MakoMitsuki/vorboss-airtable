@@ -1,0 +1,55 @@
+{
+  "enabled": false,
+
+  "separateMajorMinor": true,
+  "separateMultipleMajor": true,
+  "separateMinorPatch": false,
+
+  "branchPrefix": "dep-upgrade",
+  "additionalBranchPrefix": "{{parentDir}}-",
+
+  "assigneeFromCodeOwners": false,
+
+  "major": {
+    "enabled": true
+  },
+
+  "docker": {
+    "enabled": true
+  },
+  "docker-compose": {
+    "enabled": true
+  },
+
+  "matchSourceUrlPrefixes": [
+    "https://github.com/babel/babel"
+  ],
+  "packageRules": [
+    {
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "rangeStrategy": "pin"
+    },
+    {
+      "matchDepTypes": [
+        "engines",
+        "peerDependencies"
+      ],
+      "rangeStrategy": "auto"
+    }
+  ],
+  "extends": [
+    ":semanticCommitType(chore)"
+  ],
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/examples/**",
+    "**/__tests__/**",
+    "**/test/**",
+    "**/tests/**",
+    "**/__fixtures__/**"
+  ],
+  "ignoreNodeModules": ["nextjs"]
+
+}
