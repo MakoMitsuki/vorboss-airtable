@@ -13,18 +13,18 @@ const base = Airtable.base('app8wLQrrIMrnn673');
 
 export function ordersRouteHandler(req: Request, res: Response) {
     const orderList: Order[] = [];
-    base('Orders').select().eachPage(function page(records: any, fetchNextPage: any) {    
-        records.forEach(function(record: any) {
-            orderList.push(record._rawJson.fields);
-        });
-
-        fetchNextPage();
-    
-    }, function done(err: any) {
-        if (err) {
-            res.status(400).send(err);
-        } else {
-            res.status(200).send(orderList);
+    base('Orders').select({maxRecords: 99}).eachPage(
+        function page(records: any, fetchNextPage: any) {    
+            records.forEach(function(record: any) {
+                orderList.push(record._rawJson.fields);
+            });
+            fetchNextPage();
+        }, function done(err: any) {
+            if (err) {
+                res.status(400).send(err);
+            } else {
+                res.status(200).send(orderList);
+            }
         }
-    });
+    );
 }

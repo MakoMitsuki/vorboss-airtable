@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Datatable.scss";
 import { DataGrid } from '@mui/x-data-grid';
+import Alert from '@mui/material/Alert';
+import axios from 'axios';
 
 const columns = [
     { field: 'id', headerName: 'Order ID', width: 80 },
@@ -50,23 +52,45 @@ const columns = [
     },
   ];
 
-const rows = [
+/*const rows = [
     { id: 1, order_placed: '2021-10-05', product_name: 'cat keychain', price: 68.83, first_name: 'Jon', last_name: 'Snow', address: '123 North Rd', email: 'jonsnow@north.com', order_status: 'in_progress' },
     { id: 2, order_placed: '2021-08-27', product_name: 'i heart cat brooch', price: 28.00, first_name: 'Daenerys', last_name: 'Targaryen', address: '123 North Rd', email: 'daenerys@dothraki.com', order_status: 'shipped' },
     { id: 3, order_placed: '2021-08-27', product_name: 'i heart cat brooch', price: 28.00, first_name: 'Daenerys', last_name: 'Targaryen', address: '123 North Rd', email: 'daenerys@dothraki.com', order_status: 'shipped' },
     { id: 4, order_placed: '2021-08-10', product_name: 'little canine', price: 10.20, first_name: 'Sansa', last_name: 'Stark', address: '3123 South Rd', email: 'sansa@stark.uk', order_status: 'placed' },
     { id: 5, order_placed: '2021-11-12', product_name: 'i heart cat brooch', price: 28.00, first_name: 'Daenerys', last_name: 'Targaryen', address: '123 North Rd', email: 'daenerys@dothraki.com', order_status: 'cancelled' },
     { id: 6, order_placed: '2021-08-27', product_name: 'i heart cat brooch', price: 28.00, first_name: 'Daenerys', last_name: 'Targaryen', address: '123 North Rd', email: 'daenerys@dothraki.com', order_status: 'shipped' },
-  ];
+  ];*/
 
 const Datatable = () => {
+    const [rows, setRows] = useState([]);
+    const [alerts, setAlerts] = useState();
+
+    useEffect(()=> {
+        /*axios.get(`http://localhost:3001/orders`,{
+            headers:{
+                "accepts":"application/json"
+            }
+        }).then((response) => {
+            const { data, status } = response;
+            if (status === 200) {
+                console.log('It gets here');
+                setRows(data);
+                setAlerts();
+            }
+        }).catch((e) => {
+            console.log(e);
+            setAlerts(<Alert severity="error">{`Error - ${e}`}</Alert>);
+        });*/
+    }, []);
+
     return (
         <div className='datatable'>
+            {alerts || <></>}
             <DataGrid
                 rows={rows}
                 columns={columns}
-                pageSize={5}
-                rowsPerPageOptions={[5]}
+                pageSize={10}
+                rowsPerPageOptions={[10]}
             />
         </div>
     )

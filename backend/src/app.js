@@ -31,7 +31,9 @@ dotenv.config();
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const cors = require('cors');
 app.use(bodyParser.json({ limit: "16mb" }));
+app.use(cors());
 /* ROUTES */
 // /orders - grabs entire order listing
 app.get(`/orders`, orders_route_1.ordersRouteHandler);

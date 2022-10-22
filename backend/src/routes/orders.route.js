@@ -35,7 +35,7 @@ Airtable.configure({
 const base = Airtable.base('app8wLQrrIMrnn673');
 function ordersRouteHandler(req, res) {
     const orderList = [];
-    base('Orders').select().eachPage(function page(records, fetchNextPage) {
+    base('Orders').select({ maxRecords: 99 }).eachPage(function page(records, fetchNextPage) {
         records.forEach(function (record) {
             orderList.push(record._rawJson.fields);
         });

@@ -8,7 +8,10 @@ dotenv.config();
 import express = require("express");
 const app = express();
 import bodyParser = require("body-parser");
+const cors = require('cors');
+
 app.use(bodyParser.json({ limit: "16mb" }));
+app.use(cors());
 
 /* ROUTES */
 // /orders - grabs entire order listing
