@@ -1,38 +1,63 @@
 import React from 'react';
 import "./Datatable.scss";
 import { DataGrid } from '@mui/x-data-grid';
+import Chip from '@mui/material/Chip';
 
 const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'firstName', headerName: 'First name', width: 130 },
-    { field: 'lastName', headerName: 'Last name', width: 130 },
+    { field: 'id', headerName: 'Order ID', width: 80 },
     {
-      field: 'age',
-      headerName: 'Age',
-      type: 'number',
-      width: 90,
+        field: 'order_placed',
+        headerName: 'Order Placed',
+        width: 120,
     },
     {
-      field: 'fullName',
-      headerName: 'Full name',
-      description: 'This column has a value getter and is not sortable.',
-      sortable: false,
-      width: 160,
-      valueGetter: (params) =>
-        `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+        field: 'product_name',
+        headerName: 'Product Name',
+        width: 160,
+      },
+    {
+        field: 'price',
+        headerName: 'Price',
+        type: "number",
+        width: 120,
+    },
+    {
+      field: 'first_name',
+      headerName: 'First Name',
+      width: 180,
+    },
+    {
+        field: 'last_name',
+        headerName: 'Last Name',
+        width: 180,
+    },
+    {
+        field: 'address',
+        headerName: 'Address',
+        width: 210,
+    },
+    {
+        field: 'email',
+        headerName: 'Email',
+        width: 180,
+    },
+    {
+        field: 'order_status',
+        headerName: 'Order Status',
+        width: 120,
+        renderCell: (params) => {
+            return (<Chip label={params.row.order_status} size="small" />)
+        }
     },
   ];
-  
-  const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+
+const rows = [
+    { id: 1, order_placed: '2021-10-05', product_name: 'cat keychain', price: 68.83, first_name: 'Jon', last_name: 'Snow', address: '123 North Rd', email: 'jonsnow@north.com', order_status: 'in_progress' },
+    { id: 2, order_placed: '2021-08-27', product_name: 'i heart cat brooch', price: 28.00, first_name: 'Daenerys', last_name: 'Targaryen', address: '123 North Rd', email: 'daenerys@dothraki.com', order_status: 'shipped' },
+    { id: 3, order_placed: '2021-08-27', product_name: 'i heart cat brooch', price: 28.00, first_name: 'Daenerys', last_name: 'Targaryen', address: '123 North Rd', email: 'daenerys@dothraki.com', order_status: 'shipped' },
+    { id: 4, order_placed: '2021-08-27', product_name: 'little canine', price: 28.00, first_name: 'Daenerys', last_name: 'Targaryen', address: '123 North Rd', email: 'daenerys@dothraki.com', order_status: 'shipped' },
+    { id: 5, order_placed: '2021-11-12', product_name: 'i heart cat brooch', price: 28.00, first_name: 'Daenerys', last_name: 'Targaryen', address: '123 North Rd', email: 'daenerys@dothraki.com', order_status: 'shipped' },
+    { id: 6, order_placed: '2021-08-27', product_name: 'i heart cat brooch', price: 28.00, first_name: 'Daenerys', last_name: 'Targaryen', address: '123 North Rd', email: 'daenerys@dothraki.com', order_status: 'shipped' },
   ];
 
 const Datatable = () => {
