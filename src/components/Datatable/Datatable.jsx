@@ -1,7 +1,6 @@
 import React from 'react';
 import "./Datatable.scss";
 import { DataGrid } from '@mui/x-data-grid';
-import Chip from '@mui/material/Chip';
 
 const columns = [
     { field: 'id', headerName: 'Order ID', width: 80 },
