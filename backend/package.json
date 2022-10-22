@@ -5,10 +5,9 @@
   "main": "src/app.js",
   "scripts": {
     "lint": "node node_modules/tslint/bin/tslint 'src/**/*.ts'",
-    "build": "npm run tsc && npm run lint",
-    "tsc": "node node_modules/typescript/lib/tsc.js",
+    "build": "tsc --build",
     "start": "node src/app.js",
-    "qstart": "npm run build && npm run start"
+    "qstart": "npm run lint && npm run start"
   },
   "repository": {
     "type": "git",
@@ -26,13 +25,13 @@
     "@types/node": "^18.11.3",
     "nodemon": "^2.0.20",
     "ts-node": "^10.9.1",
-    "tslint": "^5.12.1",
-    "typescript": "^3.9.10"
+    "tslint": "^5.12.1"
   },
   "dependencies": {
     "airtable": "^0.11.5",
     "body-parser": "^1.20.1",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "typescript": "^4.8.4"
   }
 }
