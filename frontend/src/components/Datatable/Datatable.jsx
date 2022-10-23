@@ -3,7 +3,7 @@ import "./Datatable.scss";
 import { DataGrid } from '@mui/x-data-grid';
 
 const columns = [
-    { field: 'order_id', headerName: 'Order ID', width: 80 },
+    { field: 'id', headerName: 'ID', width: 80 },
     {
         field: 'order_placed',
         headerName: 'Order Placed',

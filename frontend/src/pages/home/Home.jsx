@@ -13,12 +13,13 @@ const Home = () => {
     const [revenue, setRevenue] = useState(0);
 
     useEffect(()=> {
-        axios.get(`http://localhost:3001/orders`).then((response) => {
+        axios.get(`http://localhost:3001/orders`)
+        .then((response) => {
             const { data, status } = response;
             if (status === 200) {
-                //setRows(data);
+                setRows(data);
                 setAlerts();
-                //setRows(rows);
+                console.log(data);
                 setTotalOrders(data.length);
                 setOrdersInProgress(data.filter((order) => order.status === 'in_progress').length);
                 setRevenue(

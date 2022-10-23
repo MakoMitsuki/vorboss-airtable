@@ -34,6 +34,7 @@ const bodyParser = require("body-parser");
 const cors = require('cors');
 app.use(bodyParser.json({ limit: "16mb" }));
 app.use(cors());
+app.use(express.static(__dirname));
 /* ROUTES */
 // /orders - grabs entire order listing
 app.get(`/orders`, orders_route_1.ordersRouteHandler);

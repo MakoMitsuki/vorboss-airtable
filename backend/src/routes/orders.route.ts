@@ -13,10 +13,13 @@ const base = Airtable.base('app8wLQrrIMrnn673');
 
 export function ordersRouteHandler(req: Request, res: Response) {
     const orderList: Order[] = [];
-    base('Orders').select({maxRecords: 10}).eachPage(
+    base('Orders').select({maxRecords: 20}).eachPage(
         function page(records: any, fetchNextPage: any) {    
             records.forEach(function(record: any) {
-                orderList.push(record._rawJson.fields);
+                record._rawJson.fields['id'] = record._rawJson.fields['order_id']; // Assign new key
+                delete record._rawJson.fields['order_id']; // Delete old key
+                let newOrder: Order = record._rawJson.fields as Order;
+                orderList.push(newOrder);
             });
             fetchNextPage();
         }, function done(err: any) {

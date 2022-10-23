@@ -1,5 +1,5 @@
 export interface Order {
-    order_id: number;
+    id: number;
     order_placed: Date;
     product_name: string;
     price: number;
