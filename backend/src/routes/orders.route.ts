@@ -9,7 +9,7 @@ Airtable.configure({
     endpointUrl: 'https://api.airtable.com',
     apiKey: process.env.AIRTABLE_API_KEY
 });
-const base = Airtable.base('app8wLQrrIMrnn673');
+const base = Airtable.base(process.env.AIRTABLE_TABLE_KEY);
 
 export function ordersRouteHandler(req: Request, res: Response) {
     const orderList: Order[] = [];

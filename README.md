@@ -28,14 +28,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 By default, the app will run in `http://localhost:3000`
 ## Backend
 
-Created using Express.
+Created using Express. The backend is connected to a specific Airtable API.
+Make sure to change accordingly.
 
 ### To Run
 - `npm i`
 - `npm run build`
 - `npm run start`
 
-By default, the app will run in `http://localhost:3000`
+By default, the app will run in `http://localhost:3001`
+
+Ensure that you create a .env in the backend folder using the `.env.sample` file.
 
 ## Available Scripts
 
