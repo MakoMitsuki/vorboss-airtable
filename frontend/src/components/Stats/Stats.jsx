@@ -8,6 +8,7 @@ const Stats = ({ orders }) => {
     const [revenue, setRevenue] = useState(0);
 
     useEffect(()=> {
+        console.log(orders);
         const calc_totalOrders = orders.length;
         const calc_ordersInProgress = orders.filter((order) => order.order_status === 'in_progress').length;
         const calc_revenue = orders.filter((order) => order.status !== 'cancelled').reduce((previousValue, currentValue) => previousValue + currentValue.price, 0);

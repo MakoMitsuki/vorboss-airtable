@@ -8,20 +8,23 @@ import axios from 'axios';
 const Home = () => {
     const [rows, setRows] = useState([]);
     const [alerts, setAlerts] = useState();
-
-    useEffect(()=> {
-        axios.get(`http://localhost:3001/orders`)
+    
+    const retrieveOrders = async () => {
+        await axios.get(`http://localhost:3001/orders`)
         .then((response) => {
             const { data, status } = response;
             if (status === 200) {
                 setRows(data);
                 setAlerts();
-                
             }
         }).catch((e) => {
             console.log(e);
             setAlerts(<Alert severity="error">{`Error - ${e}`}</Alert>);
         });
+    }
+
+    useEffect(()=> {
+        retrieveOrders();
     }, []);
 
     return (

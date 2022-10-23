@@ -59,7 +59,7 @@ const columns = [
     { id: 6, order_placed: '2021-08-27', product_name: 'i heart cat brooch', price: 28.00, first_name: 'Daenerys', last_name: 'Targaryen', address: '123 North Rd', email: 'daenerys@dothraki.com', order_status: 'shipped' },
   ];*/
 
-const Datatable = (rows) => {
+const Datatable = ({ rows }) => {
 
     return (
         <div className='datatable'>
