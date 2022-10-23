@@ -12,6 +12,7 @@ const columns = [
         field: 'order_placed',
         headerName: 'Order Placed',
         width: 120,
+        type: "date",
     },
     {
         field: 'product_name',
