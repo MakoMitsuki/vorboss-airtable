@@ -35,7 +35,7 @@ Airtable.configure({
 const base = Airtable.base('app8wLQrrIMrnn673');
 function ordersRouteHandler(req, res) {
     const orderList = [];
-    base('Orders').select({ maxRecords: 20 }).eachPage(function page(records, fetchNextPage) {
+    base('Orders').select().eachPage(function page(records, fetchNextPage) {
         records.forEach(function (record) {
             record._rawJson.fields['id'] = record._rawJson.fields['order_id']; // Assign new key
             delete record._rawJson.fields['order_id']; // Delete old key

@@ -8,14 +8,17 @@ import axios from 'axios';
 const Home = () => {
     const [rows, setRows] = useState([]);
     const [alerts, setAlerts] = useState();
+    const [loading, setLoading] = useState(true);
     
     const retrieveOrders = async () => {
+        setLoading(true);
         await axios.get(`http://localhost:3001/orders`)
         .then((response) => {
             const { data, status } = response;
             if (status === 200) {
                 setRows(data);
                 setAlerts();
+                setLoading(false);
             }
         }).catch((e) => {
             console.log(e);
@@ -29,10 +32,9 @@ const Home = () => {
 
     return (
         <div className='home'>
-            <h1 className='title'>Purrfect Creations</h1>
             {alerts || <></>}
             <Stats orders={rows}/>
-            <Datatable rows={rows}/>
+            <Datatable rows={rows} loading={loading}/>
         </div>
     )
 }
